@@ -1,0 +1,38 @@
+<%- include('../partials/metadata') %>
+
+<%- include('../partials/navbar', { profile }) %>
+
+<main class="pt-16">
+  <div class="flex flex-col justify-center mx-5">
+    <section class='max-w-72 w-full flex  justify-start mx-24'>
+      <% if(locals.post) postPetSitting=post.filter(e=> e.type === 'pet-sitting') %>
+      <article class='w-full'>
+        <h5 class='mx-5 mt-5 mb-2 text-xs font-bold tracking-tight text-gray-400 dark:text-white'>FOR PET SITTING
+        </h5>
+        <div class="flex gap-2">
+          <%- include('../partials/post', { post: postPetSitting, type: 'own' }) %>
+        </div>
+      </article>
+    </section>
+    <hr class='my-5'>
+    <section class='max-w-72 w-full flex justify-start mx-24'>
+      <% if(locals.post) postAdoption=post.filter(e=> e.type === 'adoption') %>
+      <article class='w-full'>
+        <h5 class='mx-5 mt-5 mb-2 text-xs font-bold tracking-tight text-gray-400 dark:text-white'>FOR ADOPTION
+        </h5>
+        <div class="flex gap-2">
+          <%- include('../partials/post', { post: postAdoption, type: 'own' }) %>
+        </div>
+      </article>
+    </section>
+  </div>
+  </div>
+</main>
+<!-- <script>
+      const copy = content => {
+        navigator.clipboard.writeText(content);
+
+        alert("Copied Link: " + content);
+      }
+    </script> -->
+<%- include('../partials/close') %>

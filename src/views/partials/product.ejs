@@ -1,0 +1,60 @@
+<% if(locals.product) product.forEach(({id, name, used_duration, description, used_duration_scale, price, sold, address, photo, category,
+  message, created_date, condition})=>
+  { %>
+<a href='/product/<%= id %>'>
+  <div class='w-64 max-w-md bg-white rounded-lg border border-gray-200 shadow-md m-3 dark:bg-gray-800 dark:border-gray-700'>
+    <div class='rounded-t-lg bg-cover bg-center h-28' style='background-image: url("<%= photo %>")'>
+    </div>
+    <div class='p-4'>
+      <div class='p-2'>
+        <p class='mb-3 text-xs font-normal text-gray-700 dark:text-gray-400'>
+          <%= condition %> | Used for <%= used_duration %> <%= used_duration_scale %>
+          <span class='float-right font-medium text-rose-500'>
+            <%= category %>
+          </span>
+        </p>
+        <h5 class='mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white'>
+          <%= name %>
+        </h5>
+        <p class='mb-3 text-xs font-normal text-gray-400 dark:text-gray-400'>
+          <%= dateFormat(created_date, 'ddd, d mmm' ) %>
+        </p>
+        <p class='mb-3 text-xs truncate font-normal text-gray-600 dark:text-gray-400'>
+          <%= description %>
+        </p>
+        <hr>
+        <div class="pt-2 text-center">
+          <b class='text-base text-green-700 dark:text-green-400'>
+            <%= price %> Taka
+          </b>
+        </div>
+      </div>
+</a>
+<div class='w-full flex justify-center items-center'>
+  <% if (sold) { %>
+  <h3 class='text-gray-400 font-bold text-base'> Sold Out </h3>
+  <% } else { %>
+  <% if (type==='own' ) { %>
+  <a href='//<%=baseURL%>/product-delete/<%= id %>' class='mr-1 w-full justify-center items-center py-2 px-4 text-sm font-bold text-center text-white bg-red-500 rounded-xl hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+    Delete
+  </a><button type='button' onclick='copy("<%=baseURL%>/product/<%= id %>")' class=' ml-1 items-center py-2 px-4 text-sm font-bold text-center text-black bg-gray-300 rounded-xl hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+    <svg width='2rem' viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+      <g style="fill:black;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:3">
+        <circle cx="50" cy="22" r="5" />
+        <circle cx="22" cy="38" r="5" />
+        <circle cx="50" cy="50" r="5" />
+        <path d="m27 40 18 8" />
+        <path d="m45 25-18 10" />
+      </g>
+    </svg>
+  </button>
+  <% } else { %>
+  <button type='button' product-id='<%= id %>' class='modal-btn-credit w-full justify-center items-center py-2 px-4 text-sm font-bold text-center text-white bg-rose-700 rounded-xl hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+    Buy Item
+  </button>
+  <% } %>
+  <% } %>
+</div>
+</div>
+</div>
+<% }); %>

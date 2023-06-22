@@ -1,0 +1,297 @@
+<nav class="fixed top-0 z-10 min-w-full bg-gray-100">
+  <div class="px-4 sm:px-6 lg:px-24">
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex items-center">
+        <div class="hidden md:block">
+          <div class="ml-2 flex items-baseline space-x-4">
+            <a href="//<%=baseURL%>/" class="mx-1.5 flex items-center rounded-md text-2xl font-mono text-black" aria-current="page">
+              <!-- <img class="h-14" style="margin-top: 0.1rem" src="//<%=baseURL%>/logo.png" /> -->
+              ฅ^•ﻌ•^ฅ <span class='text-base mt-1 ml-2 font-black'> <span class='meow-meow-1'>meow</span> <span class='meow-meow-2'>meow</span> <span class='meow-meow-3'>!</span> </span>
+            </a>
+            <!-- <form>
+              <label for='default-search'
+                class='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300'>Search</label>
+              <div class='relative'>
+                <div class='flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none'>
+                  <svg aria-hidden='true' class='w-4 h-4 text-gray-500 dark:text-gray-400' fill='none'
+                    stroke='currentColor' viewBox='0 0 24 24'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='3'
+                      d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'></path>
+                  </svg>
+                </div>
+                <input type='search' id='default-search'
+                  class='block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-50 focus:ring-rose-500 focus:border-rose-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500'
+                  placeholder='Search...' required>
+              </div>
+            </form> -->
+          </div>
+        </div>
+      </div>
+      <div class="hidden md:block">
+        <div class="ml-4 flex items-center md:ml-6">
+          <!-- Current: 'bg-gray-900 text-white', Default: 'text-gray-300 hover:bg-gray-700 hover:text-white' -->
+          <!-- <a href="//<%=baseURL%>/"
+            class="mx-1 rounded-full bg-rose-600 px-4 py-2 text-sm font-medium text-white hover:bg-rose-800 active:bg-rose-700"
+            aria-current="page">Home</a> -->
+          <button id='modal-btn' class="mx-1 rounded-full bg-rose-600 px-4 py-2 text-sm font-medium text-white hover:bg-rose-800 active:bg-rose-700" aria-current="page">New Post</button>
+
+          <button id='modal-btn-store' class="mx-1 rounded-full bg-rose-600 px-4 py-2 text-sm font-medium text-white hover:bg-rose-800 active:bg-rose-700" aria-current="page">Sell Items</button>
+          <!-- Profile dropdown -->
+          <div class="relative ml-3">
+            <div>
+              <button type="button" class="flex max-w-xs items-center rounded-full border-4 border-rose-600 bg-rose-600 text-sm hover:border-rose-700 focus:border-rose-500" id="user-menu-button" onclick="document.getElementById(`profile-menu`).classList.toggle(`hidden`)" aria-expanded="false" aria-haspopup="true">
+                <span class="sr-only">Open user menu</span>
+                <img class="h-7 w-7 rounded-full" src="//<%=baseURL%>/avatar.jpg" alt="" />
+              </button>
+            </div>
+
+            <div id="profile-menu" class="absolute right-0 mt-2 hidden w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <!-- Active: 'bg-gray-100', Not Active: ' -->
+              <p class="block px-4 py-1 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
+                <span class="text-lg font-bold"><%= profile.name %></span>
+                <span class="px-1 text-gray-400">#<%= profile.username %></span>
+              </p>
+              <hr />
+              <!-- <a href="//<%=baseURL%>/post-caring" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Pets Under You</a> -->
+              <a href="//<%=baseURL%>/post-own" class="block px-4 py-2 text-sm text-gray-700" aria-current="page">Your Posts</a>
+              <a href="//<%=baseURL%>/product-own" class="block px-4 py-2 text-sm text-gray-700" aria-current="page">Your Products</a>
+              <hr />
+              <a href="//<%=baseURL%>/product-bought" class="block px-4 py-2 text-sm text-gray-700" aria-current="page">Purchase History</a>
+              <hr />
+              <a href="//<%=baseURL%>/signout" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="-mr-2 flex md:hidden">
+        <!-- Mobile menu button -->
+        <button type="button" class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <!--
+        Heroicon name: outline/menu
+
+        Menu open: 'hidden', Menu closed: 'block'
+      -->
+          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!--
+        Heroicon name: outline/x
+
+        Menu open: 'block', Menu closed: 'hidden'
+      -->
+          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- MODAL -->
+    <main id='modal' class="hidden w-screen h-screen justify-center fixed top-0 left-0 bg-[#000000ae] z-10 overflow-x-hidden overflow-y-auto">
+      <spam id='modal-close' class='w-full h-full fixed'></spam>
+      <div class="z-20 my-8 w-full max-w-3xl h-fit rounded-lg border border-gray-200 bg-white p-4 shadow-md dark:border-gray-700 dark:bg-gray-800 sm:p-6 md:p-8">
+        <form class="space-y-5" action="/post" method="post">
+          <h5 class="text-2xl font-medium text-gray-900 dark:text-white text-center">
+            Create New Post
+          </h5>
+          <br />
+          <div class='mt-5'>
+            <div class="wrapper">
+              <input type="radio" name="type" id="option-1" value='adoption' checked>
+              <input type="radio" name="type" id="option-2" value='pet-sitting'>
+              <label for="option-1" class="option option-1">
+                <span>Adoption</span>
+              </label>
+              <label for="option-2" class="option option-2">
+                <span>Pet Sitting</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label for="name" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Name
+              *</label>
+            <input type="text" name="name" id="name" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter pet name..." required />
+          </div>
+          <div>
+            <label for="age" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Age</label>
+            <input type="number" name="age" id="age" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter age..." />
+          </div>
+          <!-- <div date-picker class="flex-col">
+            <div>
+              <label for="date" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Age
+                *</label>
+              <div class="relative">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                  <svg aria-hidden="true" class="h-5 w-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <input name="date" type="date"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
+                  placeholder="Pickup a date..." required />
+              </div>
+            </div>
+          </div> -->
+          <div class='mt-5'>
+            <label for="category" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Category
+              *</label>
+            <select name="category" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-rose-500 dark:focus:ring-rose-500">
+              <option default>Choose Category...</option>
+              <option value="Cat">Cat</option>
+              <option value="Dog">Dog</option>
+            </select>
+          </div>
+          <div>
+            <label for="address" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Address
+              *</label>
+            <input type="text" name="address" id="address" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter your address..." required />
+          </div>
+          <div>
+            <label for="link" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Photo
+              Link *</label>
+            <input type="link" name="photo" id="link" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="https://image.link/2qa..." required />
+          </div>
+          <hr />
+          <div>
+            <label for="description" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Description</label>
+            <textarea id="description" rows="4" name="description" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500" placeholder="Enter more details..."></textarea>
+          </div>
+          <button type="submit" class="w-full rounded-lg bg-rose-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-rose-800 focus:outline-none focus:ring-4 focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800">
+            Post
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- MODAL -->
+    <main id='modal-credit' class="hidden w-screen h-screen justify-center items-center fixed top-0 left-0 bg-[#000000ae] z-10 overflow-x-hidden overflow-y-auto">
+      <spam id='modal-close-credit' class='w-full h-full fixed'></spam>
+      <div class="z-20 my-8 w-full max-w-3xl h-fit rounded-lg border border-gray-200 bg-white p-4 shadow-md dark:border-gray-700 dark:bg-gray-800 sm:p-6 md:p-8">
+        <form class="space-y-5" action="/product-buy" method="post">
+          <h5 class="text-lg font-medium text-gray-900 dark:text-white text-center">
+            Enter Payment
+          </h5>
+          <hr />
+          <input type="hidden" id='hidden-input' name="product_id" value="" />
+          <div>
+            <label for="card_number" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Card Number
+              *</label>
+            <input type="number" name="card_number" id="card_number" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter item name..." required />
+          </div>
+          <div>
+            <label for="card_holder_name" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Card Holder Name
+              *</label>
+            <input type="text" name="card_holder_name" id="card_holder_name" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter item name..." required />
+          </div>
+          <div class='mt-5'>
+            <div class='mt-5 grid grid-cols-3 gap-3'>
+              <div class='col-span-2'>
+                <label for="dd" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Expire Date
+                  *</label>
+                <div class='flex gap-1'>
+                  <input type="number" name="DD" id="dd" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Used for..." required />
+                  <input type="number" name="YY" id="yy" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Used for..." required />
+                </div>
+              </div>
+              <div>
+                <label for="cvv" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">CVV
+                  *</label>
+                <input type="number" name="cvv" id="cvv" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Used for..." required />
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="w-full rounded-lg bg-green-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+            Confirm Payment
+          </button>
+        </form>
+      </div>
+    </main>
+    <!-- MODAL -->
+    <main id='modal-store' class="hidden w-screen h-screen justify-center fixed top-0 left-0 bg-[#000000ae] z-10 overflow-x-hidden overflow-y-auto">
+      <spam id='modal-close-store' class='w-full h-full fixed'></spam>
+      <div class="z-20 my-8 w-full max-w-3xl h-fit rounded-lg border border-gray-200 bg-white p-4 shadow-md dark:border-gray-700 dark:bg-gray-800 sm:p-6 md:p-8">
+        <form class="space-y-5" action="/product" method="post">
+          <h5 class="text-lg font-medium text-gray-900 dark:text-white text-center">
+            Sell Used Item
+          </h5>
+          <hr />
+          <br />
+          <div>
+            <label for="name" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Name
+              *</label>
+            <input type="text" name="name" id="name" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter item name..." required />
+          </div>
+          <div class='mt-5'>
+            <label for="used_duration" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Approximately used for
+              *</label>
+            <div class="flex gap-2">
+              <input type="number" name="used_duration" id="used_duration" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Used for..." required />
+              <select name="used_duration_scale" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-rose-500 dark:focus:ring-rose-500">
+                <option value="Hours">Hours</option>
+                <option value="Days">Days</option>
+                <option value="Weeks">Weeks</option>
+                <option value="Months">Months</option>
+                <option value="Years">Years</option>
+              </select>
+            </div>
+          </div>
+          <div class='mt-5'>
+            <label for="condition" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Condition
+              *</label>
+            <select name="condition" id='condition' class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-rose-500 dark:focus:ring-rose-500">
+              <option default>Choose condition...</option>
+              <option value="Good as New">Good as New</option>
+              <option value="Cosmetic Damage">Cosmetic Damage</option>
+              <option value="Slightly Used">Slightly Used</option>
+              <option value="Extensively Used">Extensively Used</option>
+              <option value="Damaged">Damaged</option>
+            </select>
+          </div>
+          <div class='mt-5'>
+            <label for="category" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Category
+              *</label>
+            <select name="category" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-rose-500 dark:focus:ring-rose-500">
+              <option default>Choose category...</option>
+              <option value="Food">Food</option>
+              <option value="Toy">Toy</option>
+              <option value="House">House</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <div>
+            <label for="price" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Price
+              *</label>
+            <input type="number" name="price" id="price" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter price..." required />
+          </div>
+          <div>
+            <label for="address" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Location
+              *</label>
+            <input type="text" name="address" id="address" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter your address..." required />
+          </div>
+          <div>
+            <label for="photo" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Item's Photo
+              Link *</label>
+            <input type="link" name="photo" id="photo" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="https://image.link/2qa..." required />
+          </div>
+          <hr />
+          <div>
+            <label for="description" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Description</label>
+            <textarea id="description" rows="4" name="description" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500" placeholder="Enter more details..."></textarea>
+          </div>
+          <button type="submit" class="w-full rounded-lg bg-rose-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-rose-800 focus:outline-none focus:ring-4 focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800">
+            Post in Marketplace
+          </button>
+        </form>
+      </div>
+    </main>
+  </div>
+  </div>
+</nav>

@@ -1,0 +1,64 @@
+<script>
+  const copy = content => {
+    navigator.clipboard.writeText(content);
+
+    alert("Copied Link: " + content);
+  }
+
+  const modal = document.getElementById('modal');
+  const btn = document.getElementById('modal-btn');
+  const closeBtn = document.getElementById('modal-close');
+
+  btn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  // window.addEventListener('click', (event) => {
+  //   if (event.target == btn) {
+  //     modal.style.display = 'none';
+  //   }
+  // });
+  const modalStore = document.getElementById('modal-store');
+  const btnStore = document.getElementById('modal-btn-store');
+  const closeBtnStore = document.getElementById('modal-close-store');
+
+  btnStore.addEventListener('click', () => {
+    modalStore.style.display = 'flex';
+  });
+
+  closeBtnStore.addEventListener('click', () => {
+    modalStore.style.display = 'none';
+  });
+
+  // window.addEventListener('click', (event) => {
+  //   if (event.target == modalStore) {
+  //     modalStore.style.display = 'none';
+  //   }
+  // });
+
+  const hiddenInput = document.getElementById('hidden-input');
+  const modalCredit = document.getElementById('modal-credit');
+  const btnCredit = document.getElementsByClassName('modal-btn-credit');
+  const closeBtnCredit = document.getElementById('modal-close-credit');
+
+  // Loop through each button with the 'modal-btn-credit' class
+  Array.from(btnCredit).forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const productId = btn.getAttribute('product-id');
+      hiddenInput.value = productId;
+      modalCredit.style.display = 'flex';
+    });
+  });
+
+  closeBtnCredit.addEventListener('click', () => {
+    modalCredit.style.display = 'none';
+    hiddenInput.value = "";
+  });
+</script>
+</body>
+
+</html>

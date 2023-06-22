@@ -1,0 +1,32 @@
+<% if(locals.post) post.forEach(({id, name, date, location, time_start,time_end, image, category, request, comments})=>
+  { %>
+  <a href='/care/<%= id %>'>
+    <div
+      class='w-64 max-w-md bg-white rounded-lg border border-gray-200 shadow-md m-3 dark:bg-gray-800 dark:border-gray-700'>
+      <div class='rounded-t-lg bg-cover bg-center h-28' style='background-image: url("<%= image %>")'>
+      </div>
+      <div class='p-4'>
+        <div class='p-2'>
+          <p class='mb-3 text-xs font-normal text-gray-700 dark:text-gray-400'>
+            <%= dateFormat(date, 'ddd, d mmm' ) %>
+              <span class='float-right font-medium text-rose-500'>
+                <%= category %>
+              </span>
+          </p>
+          <h5 class='mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white'>
+            <%= name %>
+          </h5>
+          <p class='mb-3 text-sm font-normal text-gray-700 dark:text-gray-400'>
+            <%= location %>
+          </p>
+        </div>
+        <div class='w-full flex justify-center items-center'>
+          <a href='//<%=baseURL%>/care-takeback?post=<%= id %>'
+            class='mr-1 w-full justify-center items-center py-2 px-4 text-sm font-bold text-center text-white bg-rose-700 rounded-xl hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+            Return Back
+          </a>
+        </div>
+      </div>
+    </div>
+  </a>
+  <% }); %>

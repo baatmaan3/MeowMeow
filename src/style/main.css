@@ -1,0 +1,90 @@
+@import "tailwindcss/base";
+@import "./global.css";
+
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.tab-active.tab-text {
+  @apply text-rose-600 rounded-t-lg border-b-2 border-rose-600 dark:text-rose-500 dark:border-rose-500
+}
+
+  /* & .tab-icon {
+    @apply text-rose-600 dark:text-rose-500 dark:group-hover:text-rose-300
+  } */
+.tab-inactive.tab-text {
+  @apply hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300
+
+  /* .tab-icon {
+    @apply text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300
+  } */
+}
+
+.wrapper{
+  display: inline-flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 12px;
+}
+.wrapper .option{
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0 6px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+input[type="radio"]{
+  display: none;
+}
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2{
+  border-color: rgb(255, 63, 94);
+  background: rgb(255, 63, 94);
+}
+#option-1:checked:checked ~ .option-1 .dot,
+#option-2:checked:checked ~ .option-2 .dot{
+  background: #fff;
+}
+#option-1:checked:checked ~ .option-1 .dot::before,
+#option-2:checked:checked ~ .option-2 .dot::before{
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper .option span{
+  font-size: 16px;
+  color: #808080;
+}
+#option-1:checked:checked ~ .option-1 span,
+#option-2:checked:checked ~ .option-2 span{
+  color: #fff;
+}
+/* Define the color animation */
+@keyframes meow-meow-animation {
+  0% {
+    color: #000000; /* start with coral color */
+  }
+  50% {
+    color: rgb(243, 244, 246); /* go back to coral color */
+  }
+  100% {
+    color: #000000; /* go back to coral color */
+  }
+}
+
+/* Apply the animation to the "meow meow" text */
+.meow-meow-1 {
+  animation: meow-meow-animation 2s ease-in-out infinite;
+}/* Apply the animation to the "meow meow" text */
+.meow-meow-2 {
+  animation: meow-meow-animation 2s ease-in-out infinite 0.5s;
+}
+.meow-meow-3 {
+  animation: meow-meow-animation 2s ease-in-out infinite 1s;
+}

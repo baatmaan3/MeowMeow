@@ -1,0 +1,151 @@
+<%- include('../partials/metadata') %>
+  <%- include('../partials/navbar', {profile: locals.profile }) %>
+
+    <% if (locals.storeItem) { %>
+      <% const {id, name, date, location, image, category, created_by, description, price, comments}=locals.storeItem %>
+
+        <main class="pt-16">
+          <div class="flex h-72 items-end bg-cover bg-center" style="background-image: url('<%= image %>')">
+            <div class="w-full flex-col px-36 py-4" style="
+        background: linear-gradient(0deg, black, transparent 120%) no-repeat;
+      ">
+              <h5 class="text-base font-bold tracking-tight text-red-500 dark:text-white">
+                <%= dateFormat(date, 'ddd, d mmm "at" hh:mm' ) %>
+              </h5>
+              <h1 class="text-3xl font-bold tracking-tight text-gray-100 dark:text-white">
+                <%= name %>
+              </h1>
+              <h5 class="text-sm tracking-tight text-gray-200 dark:text-white">
+                <%= location %>
+              </h5>
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <section class="max-w-72 mx-32 grid grid-cols-3 gap-4 pt-2">
+              <article class="mr-28 flex flex-col">
+                <div class="sticky top-16">
+                  <div class="w-full rounded-lg dark:border-gray-700 dark:bg-gray-800">
+                    <div class="px-4 py-1">
+                      <div class="my-10">
+                        <% if(created_by !==profile.username ) { %>
+                          <% if(!request.includes(profile.username) ) { %>
+                            <a href='//<%=baseURL%>/care-request?post=<%= id %>'
+                              class='mr-1 w-full justify-center items-center py-2 px-4 text-sm font-bold text-center text-white bg-rose-700 rounded-xl hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+                              Take Care
+                            </a>
+                            <% } else { %>
+                              <a href='//<%=baseURL%>/care-cancel?post=<%= id %>'
+                                class='mr-1 w-full justify-center items-center py-2 px-4 text-sm font-bold text-center text-white bg-gray-300 rounded-xl hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+                                Cancel Request
+                              </a>
+                              <% } %>
+                                <br />
+                                <% if(locals.created_by ) { %>
+                                  <br />
+                                  <a href='//<%=baseURL%>/care-request?post=<%= id %>'
+                                    class='mr-1 w-full justify-center items-center py-2 px-4 text-sm font-bold text-center text-white bg-rose-700 rounded-xl hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+                                    Take Care
+                                  </a>
+                                  <br />
+                                  <% } %>
+                      </div>
+                      <h3 class="mb-3 text-base font-bold tracking-tight text-gray-900 dark:text-white">
+                        <%= created_by %>
+                      </h3>
+                      <div class="mb-3">
+                        <h6 class="text-sm tracking-tight text-gray-900 dark:text-white">
+                          Created By:
+                        </h6>
+                        <p class="text-base font-bold tracking-tight text-gray-900 dark:text-white">
+                          <%= created_by %>
+                        </p>
+                      </div>
+                      <br />
+                      <div class="mb-3">
+                        <p class="font-sm text-base tracking-tight text-gray-900 dark:text-white">
+                          <%= description %>
+                        </p>
+                      </div>
+                      <% } else { %>
+                        <% request.map((username)=> { %>
+                          <h3 class="mb-3 text-base font-bold tracking-tight text-gray-900 dark:text-white">
+                            Requests
+                          </h3>
+                          <div class="flex w-full justify-between p-4 text-black bg-gray-200   rounded">
+                            <div class='text-sm font-bold'>
+                              <%= username %>
+                                <a href='//<%=baseURL%>/care-request?post=<%= id %>'
+                                  class='ml-5 items-center py-2 px-4 text-sm font-bold text-center text-white bg-green-700 rounded-xl hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+                                  Accept
+                                </a>
+                            </div>
+                          </div>
+                          <% }) %>
+                            <% } %>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class=" col-span-2">
+                <div class="sticky top-16 border-b border-gray-200 bg-white dark:border-gray-700">
+                  <ul class="-mb-px flex flex-wrap text-center text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <li id="comments-tab" onclick='changeTab("comments")'
+                      class="tab-text tab-inactive group mr-2 inline-flex cursor-pointer rounded-t-lg border-b-2 border-transparent p-4">
+                      <svg aria-hidden="true" class="tab-icon mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                        </path>
+                      </svg>
+                      Comments
+                    </li>
+                  </ul>
+                </div>
+                <div id="comments-container" class="w-full py-8">
+                  <form action="/care-comment/[^/]" method="post">
+                    <input type="hidden" name="type" value="comments" />
+                    <div class="-ml-2.5 flex items-center rounded-lg bg-gray-50">
+                      <textarea id="chat" rows="1" name="message"
+                        class="block w-full rounded-lg border-2 border-rose-500 bg-white p-4 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-rose-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-rose-500 dark:focus:ring-rose-500"
+                        placeholder="Your message..."></textarea>
+                      <button type="submit"
+                        class="ml-2 inline-flex cursor-pointer justify-center rounded-full p-2 text-rose-600 hover:bg-rose-100 dark:text-rose-500 dark:hover:bg-gray-600">
+                        <svg aria-hidden="true" class="h-10 w-10 rotate-90" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
+                          </path>
+                        </svg>
+                        <span class="sr-only">Send message</span>
+                      </button>
+                    </div>
+                  </form>
+                  <% comments.reverse().forEach(({date, message, created_by})=> { %>
+                    <div class="border-l-2 border-rose-500 px-5">
+                      <div class="mx-3 flex items-center gap-3">
+                        <h5 class="text-xs font-bold tracking-tight text-gray-900 dark:text-white">
+                          <%= created_by %>
+                        </h5>
+                        <div class="ml-auto mt-6 mb-2">
+                          <i class="text-xs tracking-tight text-gray-900 dark:text-white">
+                            <%= dateFormat(date, 'hh:mm "on" d mmm' ) %>
+                          </i>
+                        </div>
+                      </div>
+
+                      <div
+                        class="max-w-42 bg-grey-900 block rounded-lg border border-gray-200 p-6 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        <p class="text-sm font-normal text-gray-700 dark:text-gray-400">
+                          <%= message %>
+                        </p>
+                      </div>
+                    </div>
+                    <% }) %>
+                </div>
+              </article>
+            </section>
+          </div>
+        </main>
+        <% } %>
+
+          <%- include('../partials/close') %>

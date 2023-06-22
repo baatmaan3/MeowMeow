@@ -1,0 +1,96 @@
+<%- include('../partials/metadata') %>
+<%- include('../partials/navbar', {profile: locals.profile }) %>
+
+<% if (locals.product) { %>
+<% const {id, name, used_duration, description, used_duration_scale, price, sold, address, photo, category,
+  message, created_date, created_by, condition}=locals.product %>
+<main class="w-screen pt-28 flex justify-center">
+  <section class='m-5 p-5 shadow-2xl rounded-lg row-span-2 w-3/12'>
+    <% if(sold) {%>
+    <h3 class='text-lg pb-4 text-center'>Item Sold</h3>
+    <% }%>
+
+    <div class="flex w-full h-64 items-end bg-cover bg-center rounded-md" style="background-image: url(' <%=photo %>')">
+    </div>
+    <article class='p-4'>
+      <div class='flex justify-between'>
+        <h5 class="text-xs tracking-tight text-red-500">
+          <%= dateFormat(created_date, 'ddd, d mmm "at" hh:mm' ) %>
+        </h5>
+        <% if(created_by !==profile.username ) %>
+        <h3 class="mb-3 text-xs tracking-tight text-gray-500 dark:text-white">
+          <%= created_by %>
+        </h3>
+      </div>
+      <h1 class="text-2xl font-bold tracking-tight my-2">
+        <%= name %>
+      </h1>
+      <div class='py-2'>
+        <h5 class="text-xs tracking-tight text-gray-400">
+          Condition
+        </h5>
+        <h5 class="text-sm tracking-tight mt-1">
+          <%= condition %>
+        </h5>
+      </div>
+      <div class='py-2'>
+        <h5 class="text-xs tracking-tight text-gray-400">
+          Used duration
+        </h5>
+        <h5 class="text-sm tracking-tight mt-1">
+          <%= used_duration %> <%= used_duration_scale %>
+        </h5>
+      </div>
+      <div class='py-2'>
+        <h5 class="text-xs tracking-tight text-gray-400">
+          Address
+        </h5>
+        <h5 class="text-sm tracking-tight mt-1">
+          <%= address %>
+        </h5>
+      </div>
+      <div class='py-2'>
+        <h5 class="text-xs tracking-tight text-gray-400">
+          Description
+        </h5>
+        <h5 class="text-sm tracking-tight mt-1">
+          <%= description %>
+        </h5>
+      </div>
+      <hr>
+      <div class='py-2 text-center'>
+        <h5 class="text-xs tracking-tight text-gray-400">
+          Price
+        </h5>
+        <h5 class="text-lg font-bold tracking-tight mt-1 text-green-500">
+          <%= price %> Taka
+        </h5>
+      </div>
+      </div>
+    </article>
+    <article class='flex w-full'>
+      <% if(created_by!==profile.username && !sold) { %>
+      <button product-id='<%= id %>' class='modal-btn-credit w-full justify-center items-center py-4 px-4 text-sm font-bold text-center text-white bg-rose-700 rounded-xl hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+        Buy Item
+      </button>
+      <% } else if (created_by===profile.username)  { %>
+      <a href='//<%=baseURL%>/product-delete/<%= id %>' class='mr-1 w-full justify-center items-center py-4 px-4 text-sm font-bold text-center text-white bg-red-500 rounded-xl hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+        Delete
+      </a><button type='button' onclick='copy("<%=baseURL%>/product/<%= id %>")' class=' ml-1 items-center py-4 px-4 text-sm font-bold text-center text-black bg-gray-300 rounded-xl hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800'>
+        <svg width='2rem' viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+          <g style="fill:black;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:3">
+            <circle cx="50" cy="22" r="5" />
+            <circle cx="22" cy="38" r="5" />
+            <circle cx="50" cy="50" r="5" />
+            <path d="m27 40 18 8" />
+            <path d="m45 25-18 10" />
+          </g>
+        </svg>
+      </button>
+      <% } %>
+    </article>
+  </section>
+</main>
+<% } %>
+
+<%- include('../partials/close') %>

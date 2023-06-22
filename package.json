@@ -1,0 +1,36 @@
+{
+  "name": "meowmeow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/main.js",
+  "author": "Kuree",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "concurrently \"nodemon ./src/main.js\", \"npm run tailwind:css\"",
+    "tailwind:css": "postcss -w ./src/style/main.css -o ./dist/style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dateformat": "^5.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.17.1",
+    "express-session": "^1.17.3",
+    "flowbite": "^1.5.2",
+    "mongoose": "^7.0.1",
+    "postcss-import": "^15.1.0",
+    "prettier-plugin-tailwindcss": "^0.2.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.1",
+    "concurrently": "^7.3.0",
+    "cross-env": "^7.0.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "postcss": "^8.1.2",
+    "postcss-cli": "^10.0.0",
+    "prettier": "^2.7.1",
+    "tailwindcss": "^3.1.8"
+  }
+}

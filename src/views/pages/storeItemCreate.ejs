@@ -1,0 +1,59 @@
+<%- include('../partials/metadata') %> <%- include('../partials/navbar', { profile }) %>
+<main class="flex min-h-full justify-center">
+  <section class="flex w-full justify-center gap-3">
+    <div class="my-40 w-full max-w-3xl rounded-lg border border-gray-200 bg-white p-4 shadow-md dark:border-gray-700 dark:bg-gray-800 sm:p-6 md:p-8">
+      <form class="space-y-5" action="/care-create" method="post">
+        <h5 class="text-2xl font-medium text-gray-900 dark:text-white">
+          New Item
+        </h5>
+        <br />
+        <div>
+          <label for="name" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
+          <input type="text" name="name" id="name" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter item name..." required />
+        </div>
+        <div date-picker class="flex-col">
+          <div>
+            <label for="date" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Date</label>
+            <div class="relative">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg aria-hidden="true" class="h-5 w-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <input name="date" type="text" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm" placeholder="Pickup a date..." required />
+            </div>
+            <div class='mt-5'>
+              <label for="category" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Category</label>
+              <select name="category" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-rose-500 dark:focus:ring-rose-500">
+                <option default>Choose Category...</option>
+                <option value="Food">Food</option>
+                <option value="House">House</option>
+                <option value="Toy">Toy</option>
+                <option value="Essential">Essential</option>
+                <option value="Health">Health</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="location" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Location</label>
+          <input type="text" name="location" id="location" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Enter your location..." required />
+        </div>
+        <div>
+          <label for="link" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Image
+            Link</label>
+          <input type="link" name="image" id="link" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="https://image.link/2qa..." required />
+        </div>
+        <hr />
+        <div>
+          <label for="description" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Description</label>
+          <textarea id="description" rows="4" name="description" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500" placeholder="Enter more details..."></textarea>
+        </div>
+        <button type="submit" class="w-full rounded-lg bg-rose-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-rose-800 focus:outline-none focus:ring-4 focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800">
+          Publish To Daycare
+        </button>
+      </form>
+    </div>
+  </section>
+</main>
+<%- include('../partials/close') %>

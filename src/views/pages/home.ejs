@@ -1,0 +1,57 @@
+<%- include('../partials/metadata') %>
+<%- include('../partials/navbar', { profile }) %>
+
+<main class="pt-24">
+  <div class="flex justify-center">
+    <form action="/home" method='get' class='max-w-[90rem] w-full grid grid-cols-1 gap-3 mx-24'>
+      <article class='w-full col-span-4'>
+        <div class='mt-2 mb-4 w-full'>
+          <div class='w-full h-60 bg-center bg-cover rounded-lg shadow-xl' style="background-image:
+                <%= locals.postType==='adoption'
+                ? 'url(https://images.unsplash.com/photo-1444212477490-ca407925329e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGV0JTIwYWRvcHRpb258ZW58MHx8MHx8&w=1000&q=80)'
+                : locals.postType==='pet-sitting'
+                ? 'url(https://images.hindustantimes.com/img/2022/03/28/1600x900/girl-g20913de55_1920_1648456966805_1648456981479.jpg)'
+                : locals.postType==='fea-market'
+                && 'url(https://www.rd.com/wp-content/uploads/2020/10/GettyImages-1215180165.jpg)'
+                %>">
+          </div>
+        </div>
+        <div class=' mt-2 mb-4 w-full flex gap-5'>
+          <a class='w-full h-20 bg-center bg-cover rounded-lg shadow-xl' href='/adoption' style="background-image: url(https://www.shutterstock.com/image-photo/lost-homeless-row-dogs-adoption-260nw-1553786579.jpg)">
+            <span class="<%=locals.postType==='adoption' ? `bg-[#ce5050bf] text-black text-2xl font-bold w-full h-full flex justify-center items-center
+                rounded-lg transition-colors border-[#0000004f] border-solid border-4` :
+                  `bg-[#000000bf] text-white text-2xl font-bold w-full h-full flex justify-center items-center
+                  rounded-lg hover:bg-[#000000df] transition-colors border-[#0000004f] border-solid border-4`
+                  %>">
+              ADOPTION
+            </span>
+          </a>
+          <a href='/pet-sitting' class='w-full h-20 bg-center bg-cover rounded-lg shadow-xl' style="background-image: url(https://assets.entrepreneur.com/images/misc/1591867625_person-in-brown-cable-knife-sweater-holding-white-and-black-129634.jpg)">
+            <span class="<%=locals.postType==='pet-sitting' ? `bg-[#ce5050bf] text-black text-2xl font-bold w-full h-full flex justify-center items-center
+                rounded-lg transition-colors border-[#0000004f] border-solid border-4` :
+                  `bg-[#000000bf] text-white text-2xl font-bold w-full h-full flex justify-center items-center
+                  rounded-lg hover:bg-[#000000df] transition-colors border-[#0000004f] border-solid border-4`
+                  %>">PET SITTING
+            </span>
+          </a>
+          <a href='/fea-market' class='w-full h-20 bg-center bg-cover rounded-lg shadow-xl' style="background-image: url(https://hips.hearstapps.com/hmg-prod/images/indoor-dog-toys-1587002073.jpg?crop=1.00xw:0.751xh;0,0.161xh&resize=1200:*)">
+            <span class="<%=locals.postType==='fea-market' ? `bg-[#ce5050bf] text-black text-2xl font-bold w-full h-full flex justify-center items-center
+                rounded-lg transition-colors border-[#0000004f] border-solid border-4` :
+                  `bg-[#000000bf] text-white text-2xl font-bold w-full h-full flex justify-center items-center
+                  rounded-lg hover:bg-[#000000df] transition-colors border-[#0000004f] border-solid border-4`
+                  %>">FLEA MARKET
+            </span>
+          </a>
+        </div>
+        <div class='h-auto flex flex-wrap'>
+          <%- locals.postType!=='fea-market' ? include('../partials/post', { post, profile, shareOnly: false }) :
+                include('../partials/product', { product, profile, type: 'others' , shareOnly: false }) %>
+        </div>
+      </article>
+    </form>
+    </section>
+  </div>
+  </div>
+</main>
+
+<%- include('../partials/close') %>

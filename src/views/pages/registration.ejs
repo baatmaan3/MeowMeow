@@ -1,0 +1,46 @@
+<%- include('../partials/metadata') %> <%- include('../partials/navbarAlt') %>
+
+<main class="flex min-h-full justify-center">
+  <section class="flex h-screen w-full items-center justify-center gap-3">
+    <div class="w-full max-w-xl rounded-lg border border-gray-200 bg-white p-4 shadow-md dark:border-gray-700 dark:bg-gray-800 sm:p-6 md:p-8">
+      <form class="space-y-5" action="/registration" method="POST">
+        <h5 class="text-xl font-medium text-gray-900 dark:text-white">
+          Register a new account
+        </h5>
+        <br />
+        <div>
+          <label for="name" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
+          <input type="name" name="name" id="name" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Your your full name" required />
+        </div>
+        <div>
+          <label for="username" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Username</label>
+          <input type="username" name="username" id="username" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="Pick a username" required />
+        </div>
+        <div>
+          <label for="password" class="ml-2 mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">Password</label>
+          <input type="password" name="password" id="password" placeholder="Enter a password" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400" required />
+        </div>
+        <div class="flex items-start">
+          <div class="flex items-start">
+            <div class="flex h-5 items-center">
+              <input id="remember" type="checkbox" value="" class="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-rose-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-rose-600" required />
+            </div>
+            <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Do you agree to our
+              <a href="//<%=baseURL%>/https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="cursor-pointer text-blue-600">Terms</a>
+              &
+              <a href="//<%=baseURL%>/https://www.youtube.com/watch?v=GtL1huin9EE" target="_blank" class="cursor-pointer text-blue-600">Services</a>?</label>
+          </div>
+        </div>
+        <button type="submit" class="w-full rounded-lg bg-rose-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-rose-800 focus:outline-none focus:ring-4 focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800">
+          Register Account
+        </button>
+        <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+          Already have an account?
+          <a href="//<%=baseURL%>/signin" class="text-rose-700 hover:underline dark:text-rose-500">Sign in</a>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/close') %>
